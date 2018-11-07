@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Início{% endblock %}
+{% block content %}
+    <section class="header6 cid-r7SmXcswco mbr-fullscreen mbr-parallax-background" id="header6-5">
+        <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(0, 0, 0);">
+        </div>
+
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="mbr-white col-md-10">
+                    <h1 class="mbr-section-title align-center mbr-bold pb-3 mbr-fonts-style display-2">Prémio
+                        Personalidade
+                        De Mérito Lunda-Norte</h1>
+                    <p class="mbr-text align-center pb-3 mbr-fonts-style display-5">
+                        Já sabe a quem votar?
+                    </p>
+                    <div class="mbr-section-btn align-center">
+                        <a class="btn btn-sm bg-theme-color display-4" href="{% url 'core:categoria-list' %}">
+                            <span class="mbri-paper-plane mbr-iconfont mbr-iconfont-btn"></span>VOTAR AGORA
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mbr-arrow hidden-sm-down" aria-hidden="true">
+            <a href="#next">
+                <i class="mbri-down mbr-iconfont"></i>
+            </a>
+        </div>
+    </section>
+
+    <section class="features1 cid-r7SpaIgkjQ" id="features1-b">
+
+
+        <div class="container">
+            <div class="media-container-row">
+                <div class="card p-3 col-12 col-md-6 col-lg-4">
+                    <div class="card-img pb-3">
+                        <span class="mbr-iconfont mobi-mbri-numbered-list mobi-mbri color-theme"></span>
+                    </div>
+                    <div class="card-box">
+                        <h4 class="card-title py-3 mbr-fonts-style display-5">
+                            Regulamentos</h4>
+                        <p class="mbr-text mbr-fonts-style display-7">
+                            Após a nomeação será obrigatório o prenchimento da ficha de inscrição para formalizar a
+                            disponibilidade de concorrer ao mesmo concurso, onde por meio dela autorizam a organização a
+                            utilizar, publicar e reproduzir sua imagem.
+                        </p>
+                        <div class="mbr-section-btn align-center">
+                            <a class="btn btn-sm bg-theme-color display-4" href="{% url 'core:regulamentos' %}">LER MAIS</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-3 col-12 col-md-6 col-lg-4">
+                    <div class="card-img pb-3">
+                        <span class="mbr-iconfont mobi-mbri-user mobi-mbri color-theme"></span>
+                    </div>
+                    <div class="card-box">
+                        <h4 class="card-title py-3 mbr-fonts-style display-5">Sobre o Concurso</h4>
+                        <p class="mbr-text mbr-fonts-style display-7">
+                            O Premio Personalidade de Merito é um concurso único de ambito provincial a ser realizado na
+                            provincial da Lunda-Norte.
+                        </p>
+                        <div class="mbr-section-btn align-center">
+                            <a class="btn btn-sm bg-theme-color display-4" href="{% url 'core:sobre-concurso' %}">LER MAIS</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-3 col-12 col-md-6 col-lg-4">
+                    <div class="card-img pb-3">
+                        <span class="mbr-iconfont mbri-growing-chart color-theme"></span>
+                    </div>
+                    <div class="card-box" id="chart-PPM">
+                        <h4 class="card-title py-3 mbr-fonts-style display-5">Estatística</h4>
+                        <p class="mbr-text mbr-fonts-style display-7">
+                            <span class="badge badge-pill bg-theme-color" id="num_categoria">{{ categorias }}</span>
+                            <span id="num_categoria_text"> - Categorias</span>
+                            <br>
+                            <span class="badge badge-pill bg-theme-color"
+                                  id="num_participante">{{ participantes }}</span>
+                            <span id="num_participante_text"> - Participantes</span>
+                        </p>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <div class="apoio py-md-5">
+        <div class="container ">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="text-center font-weight-bold">Organização</p>
+                    <div class="row d-flex justify-content-center">
+                        <div class="card border-0" style="width: 5rem;">
+                            <img class="card-img w-100" style="filter: grayscale(2);"
+                                 src="{% static 'img/imperio-mua.jpg' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <p class="text-center font-weight-bold">Apoio</p>
+                    <div class="row d-flex justify-content-around">
+                        <div class="card border-0" style="width: 5rem;">
+                            <img class="card-img w-100" src="{% static 'img/gov-LN.png' %}" alt=""
+                                 style="filter: grayscale(2);">
+                        </div>
+                        <div class="card border-0" style="width: 5rem;">
+                            <img class="card-img w-100" src="{% static 'img/Platina-Line-2.png' %}" alt=""
+                                 style="filter: grayscale(2);">
+                        </div>
+                        <div class="card border-0" style="width: 5rem;">
+                            <img class="card-img w-100" src="{% static 'img/zap.jpg' %}" alt=""
+                                 style="filter: grayscale(2);">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

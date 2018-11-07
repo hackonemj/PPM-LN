@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Categorias{% endblock %}
+
+{% block content %}
+    <style type="text/css">
+        body {
+            padding-right: 0px !important;
+        }
+
+        nav {
+            background-color: #333 !important;
+        }
+
+        .categorias {
+            padding-top: 7rem !important;
+        }
+
+        .overlay {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            z-index: 2;
+            opacity: 0;
+            background: rgba(39, 42, 43, 0.8);
+            transition: opacity 200ms ease-in-out;
+            border-radius: 4px;
+        }
+
+        .overlay button {
+            margin: 5px;
+        }
+
+        .overlay:hover, .overlay:focus {
+            opacity: 1;
+        }
+
+        .bottom-centered {
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+            text-align: center;
+            padding: 12px 0;
+            background-color: unset;
+            display: block;
+            animation-duration: 2s;
+        }
+
+        [data-notify="container"][class*="alert-pastel-"] {
+            border-width: 0px;
+            border-radius: 6px;
+            box-shadow: 0px 0px 5px rgba(51, 51, 51, 0.3);
+            letter-spacing: 1px;
+        }
+
+        [data-notify="container"].alert-pastel-success {
+            top: 85px !important;
+            text-align: center;
+            background-color: #82c91e;
+            text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        [data-notify="container"].alert-pastel-danger {
+            top: 85px !important;
+            text-align: center;
+            background-color: rgb(255, 103, 76);
+            text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        [data-notify="container"][class*="alert-pastel-"] > [data-notify="title"] {
+            color: #fff;
+            display: block;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        [data-notify="container"][class*="alert-pastel-"] > [data-notify="message"] {
+            font-weight: 400;
+            color: #fff;
+        }
+
+        @media only screen and (max-width: 576px) {
+            [data-notify="container"].alert-pastel-danger, [data-notify="container"].alert-pastel-success {
+                right: 0px !important;
+            }
+        }
+    </style>
+    <div class="categorias py-md-5">
+        <div class="container" id="categorias">
+            <div class="row">
+                {% for c in latest_category_list %}
+                    <div class="col-md-4 border-0 rounded-0 mb-4">
+                        <div class="card border-0 rounded-0">
+                            <div class="overlay border-0 rounded-0">
+                                <div class="mbr-section-btn align-center">
+                                    <a class="btn btn-sm bg-theme-color display-4" data-toggle="modal"
+                                       data-target=".votar-modal"
+                                       onclick="getCategoriaDetail('{{ c.id }}', '{{ c.area }}', '{% url 'core:ajax_categoria_detail' id=c.id %}')">
+                                        <span class="mbri-paper-plane mbr-iconfont mbr-iconfont-btn"></span>VOTAR
+                                    </a>
+                                </div>
+                            </div>
+                            <img class="card-img border-0 rounded-0 w-100"
+                                 src="
+                                     {% if c.imagem.url is not None %}
+                                            {{ c.imagem.url }}
+                                     {% else %}
+                                            {% static 'img/bryan-goff.jpg' %}
+                                     {% endif %}" alt="Card image cap">
+                            <div class="bottom-centered">
+                                <h5 class="text-white">{{ c.area }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                {% empty %}
+                    <div class="align-center bg-warning py-4">
+                        <p class="text-center">Sem categorias disponivéis!</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/js.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Resultados{% endblock %}
+{% block content %}
+
+    <style type="text/css">
+        nav {
+            background-color: #333 !important;
+        }
+
+        .resultados-section {
+            padding-top: 7rem !important;
+        }
+    </style>
+    <div class="container resultados-section py-md-5">
+        <div class="row">
+            {% for c in categorias %}
+                <div class="col-sm-4">
+                    <div class="card bg-light mb-3 text-center">
+                        <div class="card-header"><b>{{ c.area }}</b></div>
+                        <div class="card-body">
+                            {% for participante in participantes %}
+                                {% if participante.categoria.area == c.area %}
+                                    <p class="card-text">{{ participante.nome }}
+                                        <span class="badge badge-pill bg-theme-color">{{ participante.votos }}</span>
+                                    </p>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

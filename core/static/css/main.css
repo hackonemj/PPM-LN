@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Rubik');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Rubik', sans-serif;
+}
+
+.main-page {
+    width: 100%;
+    min-height: 550px;
+    background: url('../img/bg.jpg') round center;
+    background-size: cover;
+}
+
+nav li a {
+    color: white !important;
+}
+
+.btn-b-radius {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+    border-radius: 50px !important;
+}
+
+.inner {
+    padding: 40px 0;
+}
+
+.apoio .card, .apoio .card-img {
+    border-radius: unset !important;
+}
